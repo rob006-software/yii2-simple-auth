@@ -1,5 +1,5 @@
 {
-    "name": "carriera/yii2-simpleauth",
+    "name": "carriera/yii2-simple-auth",
     "description": "Yii2 extension that provides simple authentication based on secret key.",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","auth","authentication"],
