@@ -28,7 +28,7 @@ class BehaviorFilter extends \yii\base\Behavior {
 	 */
 	public function events()
 	{
-		return [yii\base\ActionEvent::EVENT_BEFORE_ACTION => 'beforeAction'];
+		return [\yii\base\ActionEvent::EVENT_BEFORE_ACTION => 'beforeAction'];
 	}
 
 	/**
