@@ -19,11 +19,23 @@ namespace carriera\simpleauth;
 class BehaviorFilter extends \yii\base\Behavior {
 
 	/**
-	 * @todo
-	 * {@inheritdoc}
+	 * Declares event handlers for the [[owner]]'s events.
+	 * @return array events (array keys) and the corresponding event handler methods (array values).
 	 */
-	public function beforeAction($action) {
-		return parent::beforeAction($action);
+	public function events()
+	{
+		return [Controller::EVENT_BEFORE_ACTION => 'beforeAction'];
 	}
 
+	/**
+	 * @param \yii\base\ActionEvent $event
+	 * @return boolean
+	 * @throws \yii\web\HttpException when the request method is not allowed.
+	> */
+	public function beforeAction($event)
+	{
+		// validation
+
+		return $event->isValid;
+	}
 }
