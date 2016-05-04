@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.md.
  */
 
-namespace salenauts\simpleauth;
+namespace carriera\simpleauth;
 
 /**
  * Action filter for validating simple auth.
