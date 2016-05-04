@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist salenauts/yii2-simple-auth "*"
+php composer.phar require --prefer-dist salenauts/yii2-simple-auth "dev-master"
 ```
 
 or add
 
 ```
-"salenauts/yii2-simple-auth": "*"
+"salenauts/yii2-simple-auth": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
