@@ -23,15 +23,10 @@ class BehaviorFilter extends \yii\base\ActionFilter {
 	public $exclude = [];
 
 	/**
-	 * @param \yii\base\ActionEvent $event
-	 * @return boolean
-	 * @throws \yii\web\HttpException when the request method is not allowed.
+	 * @todo
+	 * {@inheritdoc}
 	 */
-	 
-	public function beforeAction($event)
-	{
-		// validation
-
-		return $event->isValid;
+	public function beforeAction($action) {
+		return parent::beforeAction($action);
 	}
 }
