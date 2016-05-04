@@ -35,7 +35,8 @@ class BehaviorFilter extends \yii\base\Behavior {
 	 * @param \yii\base\ActionEvent $event
 	 * @return boolean
 	 * @throws \yii\web\HttpException when the request method is not allowed.
-	> */
+	 */
+	 
 	public function beforeAction($event)
 	{
 		// validation
