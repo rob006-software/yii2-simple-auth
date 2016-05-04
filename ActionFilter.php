@@ -16,7 +16,7 @@ namespace carriera\simpleauth;
  *
  * @author Robert Korulczyk <robert@korulczyk.pl>
  */
-class BehaviorFilter extends \yii\base\ActionFilter {
+class ActionFilter extends \yii\base\ActionFilter {
 
 	public $actions = [];
 
