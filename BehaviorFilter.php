@@ -18,6 +18,10 @@ namespace carriera\simpleauth;
  */
 class BehaviorFilter extends \yii\base\Behavior {
 
+	public $actions = [];
+
+	public $exclude = [];
+
 	/**
 	 * Declares event handlers for the [[owner]]'s events.
 	 * @return array events (array keys) and the corresponding event handler methods (array values).
