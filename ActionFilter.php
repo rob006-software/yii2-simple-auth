@@ -16,7 +16,7 @@ namespace salenauts\simpleauth;
  *
  * @author Robert Korulczyk <robert@korulczyk.pl>
  */
-class ActionFilter extends yii\base\ActionFilter {
+class ActionFilter extends \yii\base\ActionFilter {
 
 	/**
 	 * @todo
