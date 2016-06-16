@@ -1,24 +1,25 @@
 {
-    "name": "salenauts/yii2-simple-auth",
-    "description": "Yii2 extension that provides simple authentication based on secret key.",
-    "type": "yii2-extension",
-    "keywords": ["yii2","extension","auth","authentication"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Robert Korulczyk",
-            "email": "robert@korulczyk.pl"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "2.0.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "salenauts\\simpleauth\\": ""
-        }
-    },
-    "suggest": {
-        "yiisoft/yii2-httpclient": "HTTP client supported by extension authenticator."
-    }
+	"name": "salenauts/yii2-simple-auth",
+	"description": "Yii2 extension that provides simple authentication based on secret key.",
+	"type": "yii2-extension",
+	"keywords": ["yii2", "extension", "auth", "authentication"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Robert Korulczyk",
+			"email": "robert@korulczyk.pl",
+			"homepage": "https://rob006.net/"
+		}
+	],
+	"require": {
+		"yiisoft/yii2": "2.0.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"salenauts\\simpleauth\\": ""
+		}
+	},
+	"suggest": {
+		"yiisoft/yii2-httpclient": "HTTP client supported by extension authenticator"
+	}
 }
