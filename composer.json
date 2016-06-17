@@ -14,6 +14,9 @@
 	"require": {
 		"yiisoft/yii2": "2.0.*"
 	},
+	"require-dev": {
+		"yiisoft/yii2-httpclient": "2.0.x-dev"
+	},
 	"autoload": {
 		"psr-4": {
 			"salenauts\\simpleauth\\": ""
