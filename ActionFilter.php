@@ -58,6 +58,13 @@ class ActionFilter extends \yii\base\ActionFilter {
 	public $getParamName = Authenticator::PARAM_NAME;
 
 	/**
+	 * Secret key used for generate token. Leave empty to use secret from
+	 * config (Yii::$app->params['simpleauth']['secret']).
+	 * @var string
+	 */
+	public $secret;
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function beforeAction($action) {
@@ -148,7 +155,7 @@ class ActionFilter extends \yii\base\ActionFilter {
 		if (!$this->validateTimestamp($time)) {
 			throw new ForbiddenHttpException('Token expired.');
 		}
-		if (!Token::validate($hash, $url, $time)) {
+		if (!Token::validate($hash, $url, $time, $this->secret)) {
 			throw new ForbiddenHttpException('Invalid token.');
 		}
 

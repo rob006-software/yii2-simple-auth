@@ -25,23 +25,40 @@ abstract class Authenticator {
 	const PARAM_NAME = 'simple_auth_token';
 
 	/**
+	 * Request for authenticate.
+	 * @var mixed
+	 */
+	protected $request;
+
+	/**
+	 * Secret key used for authenticate.
+	 * @var string
+	 */
+	protected $secret;
+
+	/**
 	 * Authenticate given Request object by specified method.
 	 *
 	 * @param mixed $request Request object.
-	 * @param string $method
+	 * @param string $method Authentication method.
+	 * @param string $secret Secret key used for generate token. Leave empty to use secret from
+	 * config (Yii::$app->params['simpleauth']['secret']).
 	 * @return mixed Authenticated Request object.
 	 * @throws \yii\base\InvalidParamException
 	 */
-	public static function authenticate($request, $method = self::METHOD_HEADER) {
-		static::validateRequest($request);
+	public static function authenticate($request, $method = self::METHOD_HEADER, $secret = null) {
+		$authenticator = new static();
+		$authenticator->request = $request;
+		$authenticator->secret = $secret;
+		$authenticator->validateRequest();
 
 		switch ($method) {
 			case static::METHOD_HEADER:
-				return static::authenticateByHeader($request);
+				return $authenticator->authenticateByHeader();
 			case static::METHOD_GET:
-				return static::authenticateByGetParam($request);
+				return $authenticator->authenticateByGetParam();
 			case static::METHOD_POST:
-				return static::authenticateByPostParam($request);
+				return $authenticator->authenticateByPostParam();
 			default:
 				throw new \yii\base\InvalidParamException('Incorrect authentication method.');
 		}
@@ -50,44 +67,42 @@ abstract class Authenticator {
 	/**
 	 * Generate authentication token.
 	 *
-	 * @param string $url
+	 * @param string $url URL for authenticate.
+	 * @param string $secret Secret key used for generate token. Leave empty to use secret from
+	 * config (Yii::$app->params['simpleauth']['secret']).
 	 * @return string
 	 */
-	public static function generateAuthToken($url) {
+	public static function generateAuthToken($url, $secret = null) {
 		$time = time();
-		return Token::generate($url, $time) . '_' . $time;
+		return Token::generate($url, $time, $secret) . '_' . $time;
 	}
 
 	/**
 	 * Check if given Request object has correct type.
 	 * 
-	 * @param mixed $request Request object to test.
 	 * @throws \yii\base\Exception When required class does not exist.
 	 * @throws \yii\base\InvalidParamException When $request has invalid type.
 	 */
-	abstract protected static function validateRequest($request);
+	abstract protected function validateRequest();
 
 	/**
-	 * Add authentication token to header of given Request.
+	 * Add authentication token to header of authenticated Request.
 	 *
-	 * @param mixed $request Request object.
 	 * @return mixed Authenticated Request object.
 	 */
-	abstract protected static function authenticateByHeader($request);
+	abstract protected function authenticateByHeader();
 
 	/**
-	 * Add authentication token to GET param of given Request.
+	 * Add authentication token to GET param of authenticated Request.
 	 *
-	 * @param mixed $request Request object.
 	 * @return mixed Authenticated Request object.
 	 */
-	abstract protected static function authenticateByGetParam($request);
+	abstract protected function authenticateByGetParam();
 
 	/**
-	 * Add authentication token to POST param of given Request.
+	 * Add authentication token to POST param of authenticated Request.
 	 *
-	 * @param mixed $request Request object.
 	 * @return mixed Authenticated Request object.
 	 */
-	abstract protected static function authenticateByPostParam($request);
+	abstract protected function authenticateByPostParam();
 }

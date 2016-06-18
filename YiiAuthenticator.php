@@ -26,11 +26,13 @@ class YiiAuthenticator extends Authenticator {
 	 *
 	 * @param \yii\httpclient\Request $request Request object.
 	 * @param string $method
+	 * @param string $secret Secret key used for generate token. Leave empty to use secret from
+	 * config (Yii::$app->params['simpleauth']['secret']).
 	 * @return \yii\httpclient\Request Authenticated Request object.
 	 * @throws \yii\base\InvalidParamException
 	 */
-	public static function authenticate($request, $method = self::METHOD_HEADER) {
-		return parent::authenticate($request, $method);
+	public static function authenticate($request, $method = self::METHOD_HEADER, $secret = null) {
+		return parent::authenticate($request, $method, $secret);
 	}
 
 	/**
@@ -38,54 +40,45 @@ class YiiAuthenticator extends Authenticator {
 	 * Require \yii\httpclient\Request from yiisoft/yii2-httpclient.
 	 * @see https://github.com/yiisoft/yii2-httpclient
 	 */
-	protected static function validateRequest($request) {
+	protected function validateRequest() {
 		if (!class_exists('\yii\httpclient\Request')) {
 			throw new \yii\base\Exception('Class \yii\httpclient\Request does not exist. '
 			. 'Package yiisoft/yii2-httpclient should be installed to use this Authenticator.');
 		}
-		if (!($request instanceof \yii\httpclient\Request)) {
+		if (!($this->request instanceof \yii\httpclient\Request)) {
 			throw new \yii\base\InvalidParamException('$request should be instance of \yii\httpclient\Request');
 		}
 	}
 
 	/**
 	 * {@inheritdoc}
-	 *
-	 * @param \yii\httpclient\Request $request
-	 * @return \yii\httpclient\Request
 	 */
-	protected static function authenticateByHeader($request) {
-		$copy = clone $request;
-		return $request->addHeaders([
-					static::HEADER_NAME => static::generateAuthToken($copy->prepare()->getUrl()),
+	protected function authenticateByHeader() {
+		$copy = clone $this->request;
+		return $this->request->addHeaders([
+					static::HEADER_NAME => static::generateAuthToken($copy->prepare()->getUrl(), $this->secret),
 		]);
 	}
 
 	/**
 	 * {@inheritdoc}
-	 *
-	 * @param \yii\httpclient\Request $request
-	 * @return \yii\httpclient\Request
 	 */
-	protected static function authenticateByGetParam($request) {
-		$copy = clone $request;
-		$request->setMethod('get');
-		return $request->setData(array_merge((array) $request->data, [
-					static::PARAM_NAME => static::generateAuthToken($copy->prepare()->getUrl())
+	protected function authenticateByGetParam() {
+		$copy = clone $this->request;
+		$this->request->setMethod('get');
+		return $this->request->setData(array_merge((array) $this->request->data, [
+					static::PARAM_NAME => static::generateAuthToken($copy->prepare()->getUrl(), $this->secret),
 		]));
 	}
 
 	/**
 	 * {@inheritdoc}
-	 *
-	 * @param \yii\httpclient\Request $request
-	 * @return \yii\httpclient\Request
 	 */
-	protected static function authenticateByPostParam($request) {
-		$request->setMethod('post');
-		$copy = clone $request;
-		return $request->setData(array_merge((array) $request->data, [
-					static::PARAM_NAME => static::generateAuthToken($copy->prepare()->getUrl())
+	protected function authenticateByPostParam() {
+		$this->request->setMethod('post');
+		$copy = clone $this->request;
+		return $this->request->setData(array_merge((array) $this->request->data, [
+					static::PARAM_NAME => static::generateAuthToken($copy->prepare()->getUrl(), $this->secret),
 		]));
 	}
 
