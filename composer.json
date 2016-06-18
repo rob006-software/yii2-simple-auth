@@ -19,10 +19,15 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"salenauts\\simpleauth\\": ""
+			"salenauts\\simpleauth\\": "src/"
 		}
 	},
 	"suggest": {
 		"yiisoft/yii2-httpclient": "HTTP client supported by extension authenticator"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0-dev"
+		}
 	}
 }
