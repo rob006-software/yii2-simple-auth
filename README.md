@@ -53,6 +53,8 @@ This is optional - you can always explicitly specify the key for authentication/
 
 ### Authentication (client side)
 
+#### Authentication when using official `yii2-httpclient` extension
+
 You can simply authenticate Request object from official Yii 2 [http-client](https://github.com/yiisoft/yii2-httpclient):
 
 ```php
@@ -99,9 +101,10 @@ $request = Authenticator::authenticate($request, Authenticator::METHOD_POST);
 $response = $request->send();
 ```
 
+#### Authentication any request
+
 You can use Authenticator to authenticate any request, even if you you don't use `yii2-httpclient`
-package.
-For example, authentication cURL request by GET param:
+package. For example, authentication cURL request by GET param:
 
 ```php
 use salenauts\simpleauth\Authenticator;
@@ -151,6 +154,7 @@ class MyController extends \yii\web\Controller {
 
 	...
 }
+```
 
 You can also configure some settings for filter:
 
