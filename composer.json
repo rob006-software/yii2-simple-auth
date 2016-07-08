@@ -11,6 +11,10 @@
 			"homepage": "https://rob006.net/"
 		}
 	],
+	"support": {
+		"issues": "https://github.com/Salenauts/yii2-simple-auth/issues",
+		"source": "https://github.com/Salenauts/yii2-simple-auth"
+	},
 	"require": {
 		"yiisoft/yii2": "2.0.*"
 	},
