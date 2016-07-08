@@ -1,11 +1,11 @@
 Simple authentication extension for Yii 2
 =========================================
 
-Yii 2 extension that provides simple authentication based on secret key.
+Yii 2 extension that provides simple authentication based on a secret key.
 
-Extension provide components for easy authenticate and validate request. Each request get its own
-unique token with expiration time, so no passwords or keys are send with request - it should be
-safer than [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)
+The extension provides components for easy authenticate and validate the request. Each request gets
+its own unique token with the expiration time, so no passwords or keys are sent with the request -
+it should be safer than [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)
 when you don't use https.
 
 Installation
@@ -55,7 +55,8 @@ This is optional - you can always explicitly specify the key for authentication/
 
 #### Authentication when using official `yii2-httpclient` extension
 
-You can simply authenticate Request object from official Yii 2 [http-client](https://github.com/yiisoft/yii2-httpclient):
+You can simply authenticate `Request` object from official Yii 2 [httpclient](https://github.com/yiisoft/yii2-httpclient)
+by using `YiiAuthenticator` helper:
 
 ```php
 use yii\httpclient\Client;
@@ -69,10 +70,10 @@ $request = Authenticator::authenticate($request);
 $response = $request->send();
 ```
 
-By default Authenticator send authentication token in header of request. Alternatively you can send
-it as param in GET or POST request. Be careful when you use POST method, becouse this will set
-request method as POST and all data set by `setData()` will be send as POST data and will not be
-included in the URL.
+By default `Authenticator` sends authentication token in the header of the request. Alternatively
+you can send it in GET or POST param of request. Be careful when you using POST method because
+this will set request method as POST and all data set by `\yii\httpclient\Request::setData()` will
+be sent as POST data and will not be included in the URL.
 
 Authentication by GET param with custom secret key:
 
@@ -103,7 +104,7 @@ $response = $request->send();
 
 #### Authentication any request
 
-You can use Authenticator to authenticate any request, even if you you don't use `yii2-httpclient`
+You can use `Authenticator` to authenticate any request, even if you don't use `yii2-httpclient`
 package. For example, authentication cURL request by GET param:
 
 ```php
@@ -156,7 +157,7 @@ class MyController extends \yii\web\Controller {
 }
 ```
 
-You can also configure some settings for filter:
+You can also configure some settings for `ActionFilter`:
 
 ```php
 use salenauts\simpleauth\ActionFilter;
@@ -192,7 +193,7 @@ class MyController extends \yii\web\Controller {
 
 ### Final comments
 
-Make sure that you generate token for final URL and no redirects are performed for request.
+Make sure that you generate token for final URL and no redirections are performed for the request.
 Token is generated for the exact address, so tokens for:
 * `http://example.com/user/list/`
 * `https://example.com/user/list/`
