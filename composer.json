@@ -1,5 +1,5 @@
 {
-	"name": "salenauts/yii2-simple-auth",
+	"name": "rob006/yii2-simple-auth",
 	"description": "Yii 2 extension that provides simple authentication based on a secret key.",
 	"type": "yii2-extension",
 	"keywords": ["yii2", "extension", "auth", "authentication"],
@@ -12,8 +12,8 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/Salenauts/yii2-simple-auth/issues",
-		"source": "https://github.com/Salenauts/yii2-simple-auth"
+		"issues": "https://github.com/rob006/yii2-simple-auth/issues",
+		"source": "https://github.com/rob006/yii2-simple-auth"
 	},
 	"require": {
 		"yiisoft/yii2": "2.0.*"
@@ -23,7 +23,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"salenauts\\simpleauth\\": "src/"
+			"rob006\\simpleauth\\": "src/"
 		}
 	},
 	"suggest": {

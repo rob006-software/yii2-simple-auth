@@ -16,13 +16,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require salenauts/yii2-simple-auth "*"
+php composer.phar require rob006/yii2-simple-auth "*"
 ```
 
 or add
 
 ```
-"salenauts/yii2-simple-auth": "*"
+"rob006/yii2-simple-auth": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -60,7 +60,7 @@ by using `YiiAuthenticator` helper:
 
 ```php
 use yii\httpclient\Client;
-use salenauts\simpleauth\YiiAuthenticator as Authenticator;
+use rob006\simpleauth\YiiAuthenticator as Authenticator;
 
 $client = new Client();
 $request = $client->createRequest()
@@ -79,7 +79,7 @@ Authentication by GET param with custom secret key:
 
 ```php
 use yii\httpclient\Client;
-use salenauts\simpleauth\YiiAuthenticator as Authenticator;
+use rob006\simpleauth\YiiAuthenticator as Authenticator;
 
 $client = new Client();
 $request = $client->createRequest()
@@ -93,7 +93,7 @@ Authentication by POST param:
 
 ```php
 use yii\httpclient\Client;
-use salenauts\simpleauth\YiiAuthenticator as Authenticator;
+use rob006\simpleauth\YiiAuthenticator as Authenticator;
 
 $client = new Client();
 $request = $client->createRequest()
@@ -108,7 +108,7 @@ You can use `Authenticator` to authenticate any request, even if you don't use `
 package. For example, authentication cURL request by GET param:
 
 ```php
-use salenauts\simpleauth\Authenticator;
+use rob006\simpleauth\Authenticator;
 
 $ch = curl_init();
 $url = 'http://api.example.com/user/list/?ids=1,2,3,4';
@@ -121,7 +121,7 @@ curl_close($ch);
 
 Authentication cURL request by header:
 ```php
-use salenauts\simpleauth\Authenticator;
+use rob006\simpleauth\Authenticator;
 
 $ch = curl_init();
 $url = 'http://api.example.com/user/list/?ids=1,2,3,4';
@@ -140,7 +140,7 @@ curl_close($ch);
 To check whether the request has a valid token simply add action filter to your controller:
 
 ```php
-use salenauts\simpleauth\ActionFilter;
+use rob006\simpleauth\ActionFilter;
 
 class MyController extends \yii\web\Controller {
 
@@ -160,8 +160,8 @@ class MyController extends \yii\web\Controller {
 You can also configure some settings for `ActionFilter`:
 
 ```php
-use salenauts\simpleauth\ActionFilter;
-use salenauts\simpleauth\Authenticator;
+use rob006\simpleauth\ActionFilter;
+use rob006\simpleauth\Authenticator;
 
 class MyController extends \yii\web\Controller {
 

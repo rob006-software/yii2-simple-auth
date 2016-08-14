@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.md.
  */
 
-namespace salenauts\simpleauth;
+namespace rob006\simpleauth;
 
 use yii\base\InvalidParamException;
 use Yii;
