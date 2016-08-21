@@ -79,8 +79,7 @@ abstract class Authenticator {
 
 	/**
 	 * Check if given Request object has correct type.
-	 * 
-	 * @throws \yii\base\Exception When required class does not exist.
+	 *
 	 * @throws \yii\base\InvalidParamException When $request has invalid type.
 	 */
 	abstract protected function validateRequest();

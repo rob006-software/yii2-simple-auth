@@ -15,13 +15,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 
 Either run
 
-```
+```shell
 php composer.phar require rob006/yii2-simple-auth "*"
 ```
 
 or add
 
-```
+```json
 "rob006/yii2-simple-auth": "*"
 ```
 
@@ -56,51 +56,8 @@ This is optional - you can always explicitly specify the key for authentication/
 #### Authentication when using official `yii2-httpclient` extension
 
 You can simply authenticate `Request` object from official Yii 2 [httpclient](https://github.com/yiisoft/yii2-httpclient)
-by using `YiiAuthenticator` helper:
-
-```php
-use yii\httpclient\Client;
-use rob006\simpleauth\YiiAuthenticator as Authenticator;
-
-$client = new Client();
-$request = $client->createRequest()
-	->setUrl('http://api.example.com/user/list/')
-	->setData(['ids' => '1,2,3,4']);
-$request = Authenticator::authenticate($request);
-$response = $request->send();
-```
-
-By default `Authenticator` sends authentication token in the header of the request. Alternatively
-you can send it in GET or POST param of request. Be careful when you using POST method because
-this will set request method as POST and all data set by `\yii\httpclient\Request::setData()` will
-be sent as POST data and will not be included in the URL.
-
-Authentication by GET param with custom secret key:
-
-```php
-use yii\httpclient\Client;
-use rob006\simpleauth\YiiAuthenticator as Authenticator;
-
-$client = new Client();
-$request = $client->createRequest()
-	->setUrl('http://api.example.com/user/list/')
-	->setData(['ids' => '1,2,3,4']);
-$request = Authenticator::authenticate($request, Authenticator::METHOD_GET, 'mycustomsecretkey');
-$response = $request->send();
-```
-
-Authentication by POST param:
-
-```php
-use yii\httpclient\Client;
-use rob006\simpleauth\YiiAuthenticator as Authenticator;
-
-$client = new Client();
-$request = $client->createRequest()
-	->setUrl('http://api.example.com/user/list/?ids=1,2,3,4');
-$request = Authenticator::authenticate($request, Authenticator::METHOD_POST);
-$response = $request->send();
-```
+by using [yii2-simple-auth-yii-authenticator](https://github.com/rob006/yii2-simple-auth-yii-authenticator)
+extension.
 
 #### Authentication any request
 

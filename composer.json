@@ -18,16 +18,13 @@
 	"require": {
 		"yiisoft/yii2": "2.0.*"
 	},
-	"require-dev": {
-		"yiisoft/yii2-httpclient": "^2.0.0"
-	},
 	"autoload": {
 		"psr-4": {
 			"rob006\\simpleauth\\": "src/"
 		}
 	},
 	"suggest": {
-		"yiisoft/yii2-httpclient": "HTTP client supported by extension authenticator"
+		"rob006/yii2-simple-auth-yii-authenticator": "Helper for authenticate Request from yii2-httpclient package"
 	},
 	"extra": {
 		"branch-alias": {
