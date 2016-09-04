@@ -15,6 +15,7 @@ namespace rob006\simpleauth;
  * Helper class for authentication requests.
  *
  * @author Robert Korulczyk <robert@korulczyk.pl>
+ * @since 1.0.0
  */
 abstract class Authenticator {
 

@@ -16,13 +16,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```shell
-php composer.phar require rob006/yii2-simple-auth "*"
+php composer.phar require rob006/yii2-simple-auth
 ```
 
 or add
 
 ```json
-"rob006/yii2-simple-auth": "*"
+"rob006/yii2-simple-auth": "^1.0"
 ```
 
 to the require section of your `composer.json` file.

@@ -18,12 +18,13 @@ use Yii;
  * Helper class for generate auth tokens.
  *
  * @author Robert Korulczyk <robert@korulczyk.pl>
+ * @since 1.0.0
  */
 class Token {
 
 	/**
 	 * Name of hashing algorithm used for generate token.
-	 * 
+	 *
 	 * @var string
 	 * @see https://secure.php.net/manual/en/function.hash.php
 	 */
@@ -66,7 +67,7 @@ class Token {
 
 	/**
 	 * Validate secret key. If $secret is empty, Yii::$app->params['simpleauth']['secret'] is used.
-	 * 
+	 *
 	 * @param string|null $secret
 	 * @return string
 	 * @throws InvalidParamException

@@ -18,6 +18,7 @@ use yii\web\ForbiddenHttpException;
  * Action filter for validating simple auth token.
  *
  * @author Robert Korulczyk <robert@korulczyk.pl>
+ * @since 1.0.0
  */
 class ActionFilter extends \yii\base\ActionFilter {
 
@@ -164,7 +165,7 @@ class ActionFilter extends \yii\base\ActionFilter {
 
 	/**
 	 * Check if given timestamp has not expired.
-	 * 
+	 *
 	 * @param int $timestamp
 	 * @return bool True if timestamp has not expired, false otherwise.
 	 */
