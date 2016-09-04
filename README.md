@@ -3,7 +3,7 @@ Simple authentication extension for Yii 2
 
 Yii 2 extension that provides simple authentication based on a secret key.
 
-The extension provides components for easy authenticate and validate the request. Each request gets
+The extension provides components for easy authenticate and validate the HTTP request. Each request gets
 its own unique token with the expiration time, so no passwords or keys are sent with the request -
 it should be safer than [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)
 when you don't use https.
