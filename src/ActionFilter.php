@@ -24,6 +24,7 @@ class ActionFilter extends \yii\base\ActionFilter {
 
 	/**
 	 * List of available authentication methods.
+	 *
 	 * @var array
 	 */
 	public $allowedMethods = [
@@ -36,24 +37,28 @@ class ActionFilter extends \yii\base\ActionFilter {
 	 * Token duration in seconds - if token is older than that, it will be treated as invalid.
 	 * For better security this value should be low, but if client or server has wrong time settings,
 	 * increasing this value may help. By default it is set to 5 minutes.
+	 *
 	 * @var int
 	 */
 	public $tokenDuration = 300;
 
 	/**
 	 * Name of header used for authentication.
+	 *
 	 * @var string
 	 */
 	public $headerName = Authenticator::HEADER_NAME;
 
 	/**
 	 * Name of POST param used for authentication.
+	 *
 	 * @var string
 	 */
 	public $postParamName = Authenticator::PARAM_NAME;
 
 	/**
 	 * Name of GET param used for authentication.
+	 *
 	 * @var string
 	 */
 	public $getParamName = Authenticator::PARAM_NAME;
@@ -61,6 +66,7 @@ class ActionFilter extends \yii\base\ActionFilter {
 	/**
 	 * Secret key used for generate token. Leave empty to use secret from
 	 * config (Yii::$app->params['simpleauth']['secret']).
+	 *
 	 * @var string
 	 */
 	public $secret;

@@ -11,8 +11,8 @@
 
 namespace rob006\simpleauth;
 
-use yii\base\InvalidParamException;
 use Yii;
+use yii\base\InvalidParamException;
 
 /**
  * Helper class for generate auth tokens.

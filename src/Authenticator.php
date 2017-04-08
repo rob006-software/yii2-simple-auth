@@ -11,6 +11,8 @@
 
 namespace rob006\simpleauth;
 
+use yii\base\InvalidParamException;
+
 /**
  * Helper class for authentication requests.
  *
@@ -27,12 +29,14 @@ abstract class Authenticator {
 
 	/**
 	 * Request for authenticate.
+	 *
 	 * @var mixed
 	 */
 	protected $request;
 
 	/**
 	 * Secret key used for authenticate.
+	 *
 	 * @var string
 	 */
 	protected $secret;
@@ -45,7 +49,7 @@ abstract class Authenticator {
 	 * @param string $secret Secret key used for generate token. Leave empty to use secret from
 	 * config (Yii::$app->params['simpleauth']['secret']).
 	 * @return mixed Authenticated Request object.
-	 * @throws \yii\base\InvalidParamException
+	 * @throws InvalidParamException
 	 */
 	public static function authenticate($request, $method = self::METHOD_HEADER, $secret = null) {
 		$authenticator = new static();
@@ -61,7 +65,7 @@ abstract class Authenticator {
 			case static::METHOD_POST:
 				return $authenticator->authenticateByPostParam();
 			default:
-				throw new \yii\base\InvalidParamException('Incorrect authentication method.');
+				throw new InvalidParamException('Incorrect authentication method.');
 		}
 	}
 
@@ -81,7 +85,7 @@ abstract class Authenticator {
 	/**
 	 * Check if given Request object has correct type.
 	 *
-	 * @throws \yii\base\InvalidParamException When $request has invalid type.
+	 * @throws InvalidParamException When $request has invalid type.
 	 */
 	abstract protected function validateRequest();
 
