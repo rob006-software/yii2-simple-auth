@@ -40,7 +40,7 @@ You can configure default secret key used by this extension by setting param in 
 return [
 	...
 	'params' => [
-        ...
+		...
 		'simpleauth' => [
 			'secret' => 'mysecretkey',
 		],
@@ -103,7 +103,7 @@ class MyController extends \yii\web\Controller {
 
 	public function behaviors() {
 		return [
-            ...
+			...
 			'simpleauth' => [
 				'class' => ActionFilter::className(),
 			],
@@ -124,7 +124,7 @@ class MyController extends \yii\web\Controller {
 
 	public function behaviors() {
 		return [
-            ...
+			...
 			'simpleauth' => [
 				'class' => ActionFilter::className(),
 				// allow authentication only by header
@@ -139,7 +139,7 @@ class MyController extends \yii\web\Controller {
 				'postParamName' => 'my_custom_token_param_name',
 				'getParamName' => 'my_custom_token_param_name',
 				// custom secret used for validate authentication
-				'secret' => 'mycostomsecretkey',
+				'secret' => 'my-custom-secret-key',
 			],
 		];
 	}
